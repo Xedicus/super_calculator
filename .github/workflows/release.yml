@@ -22,7 +22,7 @@ jobs:
         run: go mod tidy
 
       - name: Build the project
-        run: go build -o main
+        run: go build -o main ./main.go
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
