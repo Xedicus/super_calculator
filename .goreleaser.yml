@@ -1,3 +1,4 @@
+# .goreleaser.yml
 project_name: myproject
 
 before:
@@ -26,5 +27,5 @@ checksum:
 
 release:
   github:
-    owner: "{{ .Repo.Owner }}"
-    name: "{{ .Repo.Name }}"
+    owner: "{{ .Env.GITHUB_REPOSITORY_OWNER }}"
+    name: "{{ .Env.GITHUB_REPOSITORY }}"
