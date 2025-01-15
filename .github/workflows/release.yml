@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*'  # Déclenche le workflow lors de l'ajout d'un tag
+      - '*' 
 
 jobs:
   release:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Récupère l'historique complet du dépôt
+          fetch-depth: 0  
 
       - name: Set up Go
         uses: actions/setup-go@v4
@@ -25,6 +25,9 @@ jobs:
 
       - name: Build the project
         run: go build -o main ./main.go
+
+      - name: Clean up
+        run: git clean -fd
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
