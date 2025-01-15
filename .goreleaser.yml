@@ -6,7 +6,7 @@ before:
     - go mod tidy
 
 builds:
-  - main: ./main.go  # Assurez-vous que ce chemin est correct
+  - main: ./main.go  
     env:
       - GO111MODULE=on
     goos:
@@ -22,5 +22,5 @@ checksum:
 
 release:
   github:
-    owner: "{{ .Env.GITHUB_REPOSITORY_OWNER }}"
-    name: "{{ .Env.GITHUB_REPOSITORY }}"
+    owner: Xedicus
+    name: super-calculator
