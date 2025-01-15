@@ -1,12 +1,12 @@
 # .goreleaser.yml
-project_name: myproject
+project_name: super-calculator
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - main: ./main.go
+  - main: ./main.go  # Assurez-vous que ce chemin est correct
     env:
       - GO111MODULE=on
     goos:
@@ -16,6 +16,11 @@ builds:
     goarch:
       - amd64
       - arm64
+
+archives:
+  - format: tar.gz
+    files:
+      - ./main
 
 checksum:
   name_template: "checksums.txt"
