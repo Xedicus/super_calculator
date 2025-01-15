@@ -44,6 +44,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker buildx build -f ../../Dockerfile .
+          docker buildx build -f super_calculator/Dockerfile .
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}
