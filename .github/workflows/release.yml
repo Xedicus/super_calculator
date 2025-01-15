@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*'
+      - '*'  # Déclenche le workflow lors de l'ajout d'un tag
 
 jobs:
   release:
@@ -28,7 +28,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v4
         with:
           version: latest
-          args: release
+          args: release --rm-dist  # Ajoute cette option pour supprimer le répertoire dist existant
 
       - name: Build Docker image
         run: |
