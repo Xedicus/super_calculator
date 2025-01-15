@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*' 
+      - '*'  # Déclenche le workflow lors de l'ajout d'un tag
 
 jobs:
   release:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  
+          fetch-depth: 0  # Récupère l'historique complet du dépôt
 
       - name: Set up Go
         uses: actions/setup-go@v4
@@ -39,6 +39,8 @@ jobs:
           args: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Build Docker image
         run: |
