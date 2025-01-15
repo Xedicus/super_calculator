@@ -15,3 +15,10 @@ archives:
 builds:
   - env:
       - GO111MODULE=on
+    # Définissez ici la plateforme (si nécessaire)
+    goos: linux
+    goarch: amd64
+
+# Configuration de la version du projet
+version:
+  tag: "v{{ .Version }}" 
