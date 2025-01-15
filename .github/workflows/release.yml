@@ -28,7 +28,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v4
         with:
           version: latest
-          args: release  # Ajoute l'argument 'release' requis
+          args: release 
 
       - name: Build Docker image
         run: |
