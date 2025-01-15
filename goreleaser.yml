@@ -1,30 +1,17 @@
-# goreleaser.yml
-
 # Configuration de la release
 release:
   github:
     owner: ${{ github.repository_owner }}
     name: ${{ github.repository }}
-    token: ${{ secrets.GITHUB_TOKEN }} # Utilise le GITHUB_TOKEN secret pour l'authentification
+    # Pas besoin d'inclure token, GitHub le gère automatiquement via les secrets
 
 # Configuration des archives de la release
 archives:
   - format: tar.gz
     files:
-      - ./main
+      - ./main  # Le fichier binaire généré avec "go build -o main"
 
-# Configuration de la version du projet
-version:
-  # Utilisation des tags Git pour la version
-  tag: "v{{ .Version }}"
-
-
-environment:
-  GO111MODULE: on
-
-artifacts:
-
-  - name: README.md
-    path: README.md
-  - name: LICENSE
-    path: LICENSE
+# Environnement pour la construction
+builds:
+  - env:
+      - GO111MODULE=on
