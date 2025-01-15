@@ -1,12 +1,29 @@
+# .goreleaser.yml
+project_name: myproject
+
+before:
+  hooks:
+    - go mod tidy
+
 builds:
   - main: ./main
     env:
       - GO111MODULE=on
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
 
 archives:
   - format: tar.gz
     files:
       - ./main
+
+checksum:
+  name_template: "checksums.txt"
 
 release:
   github:
