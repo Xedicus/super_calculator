@@ -1,24 +1,14 @@
-# Configuration de la release
+builds:
+  - main: ./main
+    env:
+      - GO111MODULE=on
+
+archives:
+  - format: tar.gz
+    files:
+      - ./main
+
 release:
   github:
     owner: ${{ github.repository_owner }}
     name: ${{ github.repository }}
-    # Pas besoin d'inclure token, GitHub le gère automatiquement via les secrets
-
-# Configuration des archives de la release
-archives:
-  - format: tar.gz
-    files:
-      - ./main  # Le fichier binaire généré avec "go build -o main"
-
-# Environnement pour la construction
-builds:
-  - env:
-      - GO111MODULE=on
-    # Définissez ici la plateforme (si nécessaire)
-    goos: [linux]
-    goarch: [amd64]
-
-# Configuration de la version du projet
-version:
-  tag: "v{{ .Version }}" 
