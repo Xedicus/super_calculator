@@ -1,0 +1,30 @@
+# goreleaser.yml
+
+# Configuration de la release
+release:
+  github:
+    owner: ${{ github.repository_owner }}
+    name: ${{ github.repository }}
+    token: ${{ secrets.GITHUB_TOKEN }} # Utilise le GITHUB_TOKEN secret pour l'authentification
+
+# Configuration des archives de la release
+archives:
+  - format: tar.gz
+    files:
+      - ./super_calculator 
+
+# Configuration de la version du projet
+version:
+  # Utilisation des tags Git pour la version
+  tag: "v{{ .Version }}"
+
+
+environment:
+  GO111MODULE: on
+
+artifacts:
+
+  - name: README.md
+    path: README.md
+  - name: LICENSE
+    path: LICENSE
