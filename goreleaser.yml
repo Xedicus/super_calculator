@@ -11,7 +11,7 @@ release:
 archives:
   - format: tar.gz
     files:
-      - ./super_calculator 
+      - ./main
 
 # Configuration de la version du projet
 version:
