@@ -44,9 +44,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          echo "Building Docker image with tag: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}"
           docker buildx build . -f Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}
-          echo "Logging in to Docker Hub"
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-          echo "Pushing Docker image to Docker Hub"
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}
