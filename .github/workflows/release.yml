@@ -29,7 +29,7 @@ jobs:
       - name: Clean up
         run: git clean -fd
 
-      - name: Reset git state
+      - name: Reset git state #add 
         run: git reset --hard
 
       - name: Run GoReleaser
