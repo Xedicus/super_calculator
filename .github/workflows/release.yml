@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*'  
+      - '*'  # Déclenche le workflow lors de l'ajout d'un tag
 
 jobs:
   release:
@@ -29,7 +29,7 @@ jobs:
       - name: Clean up
         run: git clean -fd
 
-      - name: Reset git state #add 
+      - name: Reset git state
         run: git reset --hard
 
       - name: Run GoReleaser
@@ -44,6 +44,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker buildx build . -f Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}
+          docker buildx build . -f Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/xedicus/super_calculator:${{ github.ref_name }}
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/xedicus/super_calculator:${{ github.ref_name }}

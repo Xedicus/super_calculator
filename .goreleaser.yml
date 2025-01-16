@@ -22,5 +22,5 @@ checksum:
 
 release:
   github:
-    owner: xedicus
+    owner: Xedicus
     name: super_calculator
