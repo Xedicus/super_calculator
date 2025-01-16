@@ -1,5 +1,5 @@
 # .goreleaser.yml
-project_name: super-calculator
+project_name: super_calculator
 
 before:
   hooks:
@@ -23,4 +23,4 @@ checksum:
 release:
   github:
     owner: Xedicus
-    name: super-calculator
+    name: super_calculator
