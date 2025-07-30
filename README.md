@@ -3,7 +3,6 @@
 This is a simple calculator made in go !
 
 It supports :
-
 - division
 - multiplication
 - addition
